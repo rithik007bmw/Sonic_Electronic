@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sonic Electronics — Explore wireless headphones, studio acoustics, and active noise cancelling audio gear.">
+  <title>Sonic Electronics — Products</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/products-data.js" defer></script>
+  <script src="js/state.js" defer></script>
+  <script src="js/common.js" defer></script>
+  <script src="js/products.js" defer></script>
+</head>
+<body>
+  <div class="app-viewport">
+    
+    <!-- Top Mobile Status Bar (Figma Reference) -->
+    <header class="status-bar" aria-label="System status">
+      <span class="status-time">9:41</span>
+      <div class="status-icons">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16" aria-hidden="true">
+          <path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L12 22l7.03-4.39C20.26 16.07 21 14.12 21 12c0-4.97-4.03-9-9-9z" opacity="0.3"/>
+          <path d="M12 6a6 6 0 00-6 6c0 1.48.54 2.84 1.43 3.9L12 18.7l4.57-2.8A5.96 5.96 0 0018 12a6 6 0 00-6-6z"/>
+        </svg>
+        <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16" aria-hidden="true">
+          <path d="M12 4C7.31 4 3.07 5.9 0 8.98L12 21 24 8.98C20.93 5.9 16.69 4 12 4z"/>
+        </svg>
+        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden="true">
+          <rect x="2" y="7" width="18" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+          <rect x="4" y="9" width="12" height="6" rx="1"/>
+          <path d="M22 11v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </header>
+
+    <!-- Header with Search and Cart -->
+    <header class="site-header">
+      <div class="search-box-wrapper">
+        <span class="search-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="18" height="18">
+            <circle cx="11" cy="11" r="7"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+        </span>
+        <input 
+          type="search" 
+          id="listing-search-input"
+          class="header-search-input" 
+          placeholder="Headphones" 
+          value="Headphones"
+          aria-label="Search products"
+        >
+        <button type="button" class="search-filter-toggle" id="search-filter-quick" aria-label="Filters">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+            <line x1="4" y1="21" x2="4" y2="14"/>
+            <line x1="4" y1="10" x2="4" y2="3"/>
+            <line x1="12" y1="21" x2="12" y2="12"/>
+            <line x1="12" y1="8" x2="12" y2="3"/>
+            <line x1="20" y1="21" x2="20" y2="16"/>
+            <line x1="20" y1="12" x2="20" y2="3"/>
+            <line x1="1" y1="14" x2="7" y2="14"/>
+            <line x1="9" y1="8" x2="15" y2="8"/>
+            <line x1="17" y1="16" x2="23" y2="16"/>
+          </svg>
+        </button>
+      </div>
+      <a href="cart.html" class="cart-icon-btn" aria-label="Shopping Cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22">
+          <circle cx="9" cy="20" r="1.5"/>
+          <circle cx="18" cy="20" r="1.5"/>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+        </svg>
+        <span class="cart-badge" data-cart-badge style="display: none;">0</span>
+      </a>
+    </header>
+
+    <!-- Listing Container -->
+    <main class="listing-container">
+      
+      <!-- Filter Chips Row (Figma Screen 2) -->
+      <section class="filter-chips-row" aria-label="Filters">
+        <!-- Filters Popover Trigger -->
+        <button type="button" class="filter-chip" id="chip-filters">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+            <line x1="4" y1="6" x2="20" y2="6"/>
+            <line x1="7" y1="12" x2="17" y2="12"/>
+            <line x1="10" y1="18" x2="14" y2="18"/>
+          </svg>
+          <span>Filters · 1</span>
+        </button>
+
+        <!-- Wireless Active Filter Chip -->
+        <button type="button" class="filter-chip active" id="chip-wireless" aria-pressed="true">
+          <span>Wireless</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+
+        <!-- Price Filter Chip -->
+        <button type="button" class="filter-chip" id="chip-price">
+          <span>Price</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </button>
+
+        <!-- ANC Filter Chip -->
+        <button type="button" class="filter-chip" id="chip-anc">
+          <span>ANC</span>
+        </button>
+      </section>
+
+      <!-- Products Count & Sorting Bar -->
+      <section class="listing-meta-row" aria-label="Products count and sorting">
+        <span id="products-count-label">24 products</span>
+        <div class="sort-select-wrapper">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+            <polyline points="7 15 12 20 17 15"/>
+            <polyline points="7 9 12 4 17 9"/>
+          </svg>
+          <select id="listing-sort-select" aria-label="Sort products by">
+            <option value="recommended" selected>Recommended</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="rating">Top Rated</option>
+          </select>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12" style="position: absolute; right: 0; pointer-events: none;">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </div>
+      </section>
+
+      <!-- Product Listing 2-Column Grid -->
+      <section class="product-listing-grid-section" aria-label="Headphones list">
+        <div id="listing-products-grid" class="product-grid">
+          <!-- Rendered dynamically by js/products.js -->
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Bottom Navigation Bar -->
+    <nav class="bottom-nav-bar" aria-label="Bottom Navigation">
+      <a href="index.html" class="bottom-nav-item" data-nav="home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+          <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+        <span>Home</span>
+      </a>
+
+      <a href="products.html" class="bottom-nav-item active" data-nav="explore">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+          <circle cx="12" cy="12" r="10"/>
+          <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
+        </svg>
+        <span>Explore</span>
+      </a>
+
+      <a href="products.html?filter=saved" class="bottom-nav-item" data-nav="saved">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+          <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+        </svg>
+        <span>Saved</span>
+      </a>
+
+      <a href="cart.html" class="bottom-nav-item" data-nav="cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+          <circle cx="9" cy="20" r="1.5"/>
+          <circle cx="18" cy="20" r="1.5"/>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+        </svg>
+        <span>Cart</span>
+        <span class="bottom-nav-badge" data-cart-badge style="display: none;">0</span>
+      </a>
+    </nav>
+
+    <!-- Filter Modal Bottom Sheet -->
+    <div class="filter-modal-backdrop" id="filter-modal" role="dialog" aria-modal="true" aria-labelledby="filter-heading">
+      <div class="filter-modal-sheet">
+        <div class="sheet-header">
+          <h3 id="filter-heading">Filter Products</h3>
+          <button type="button" class="sheet-close-btn" id="filter-modal-close" aria-label="Close filters">×</button>
+        </div>
+        
+        <div style="display: flex; flex-direction: column; gap: 16px; margin-bottom: 24px;">
+          <div>
+            <label style="font-size: 13px; font-weight: 600; color: var(--dark-text); display: block; margin-bottom: 8px;">
+              Max Price: <span id="price-slider-val" style="color: var(--primary-green); font-weight: 700;">₹200</span>
+            </label>
+            <input 
+              type="range" 
+              id="filter-price-slider" 
+              min="30" 
+              max="250" 
+              step="10" 
+              value="200" 
+              style="width: 100%; accent-color: var(--primary-green);"
+              oninput="document.getElementById('price-slider-val').textContent = '₹' + this.value"
+            />
+          </div>
+
+          <div style="display: flex; gap: 10px;">
+            <button type="button" class="btn-primary-action" id="filter-apply-btn" style="flex: 1;">Apply Filters</button>
+            <button type="button" class="btn-primary-action" id="filter-reset-btn" style="flex: 1; background: #E7EFEB; color: var(--primary-green); box-shadow: none;">Reset</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

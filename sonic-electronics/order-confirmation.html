@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sonic Electronics — Order Confirmation and delivery tracking summary.">
+  <title>Sonic Electronics — Order Confirmed</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/products-data.js" defer></script>
+  <script src="js/state.js" defer></script>
+  <script src="js/common.js" defer></script>
+  <script src="js/order-confirmation.js" defer></script>
+</head>
+<body>
+  <div class="app-viewport">
+    
+    <!-- Top Mobile Status Bar in White over Coral -->
+    <header class="status-bar coral-header" aria-label="System status">
+      <span class="status-time">9:41</span>
+      <div class="status-icons">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16" aria-hidden="true">
+          <path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L12 22l7.03-4.39C20.26 16.07 21 14.12 21 12c0-4.97-4.03-9-9-9z" opacity="0.4"/>
+          <path d="M12 6a6 6 0 00-6 6c0 1.48.54 2.84 1.43 3.9L12 18.7l4.57-2.8A5.96 5.96 0 0018 12a6 6 0 00-6-6z"/>
+        </svg>
+        <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16" aria-hidden="true">
+          <path d="M12 4C7.31 4 3.07 5.9 0 8.98L12 21 24 8.98C20.93 5.9 16.69 4 12 4z"/>
+        </svg>
+        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden="true">
+          <rect x="2" y="7" width="18" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+          <rect x="4" y="9" width="12" height="6" rx="1"/>
+          <path d="M22 11v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </header>
+
+    <!-- Coral Rounded Header (Figma Screen 5) -->
+    <header class="coral-curved-header">
+      <a href="index.html" class="coral-back-btn" aria-label="Go to Home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20">
+          <polyline points="15 18 9 12 15 6"/>
+        </svg>
+      </a>
+      <h1 class="coral-header-title">Order Confirmed</h1>
+    </header>
+
+    <!-- Confirmation Content Container -->
+    <main class="confirmation-container">
+      
+      <!-- Checkmark Success Hero Section -->
+      <section class="success-badge-section" aria-label="Success confirmation">
+        <div class="checkmark-circle-outer">
+          <div class="checkmark-circle-inner">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" width="22" height="22">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </div>
+        </div>
+
+        <h2 class="success-title" id="confirm-greeting">You're all set, Alex!</h2>
+        <p class="success-subtitle">Your order is confirmed. A receipt is on its way to your inbox.</p>
+      </section>
+
+      <!-- Arrival Delivery Card (Figma Screen 5) -->
+      <section class="arrival-info-card" aria-label="Estimated arrival">
+        <div class="arrival-icon-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24">
+            <line x1="16.5" y1="9.4" x2="7.55" y2="4.24"/>
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+            <line x1="12" y1="22.08" x2="12" y2="12"/>
+          </svg>
+        </div>
+        <div class="arrival-text-block">
+          <span class="arrival-date-text" id="confirm-delivery-window">Arrives Oct 20–22</span>
+          <span class="arrival-address-text" id="confirm-address">Alex Morgan · 18 Spring St&#10;New York, NY 10012</span>
+        </div>
+      </section>
+
+      <!-- Order Summary Card (Figma Screen 5) -->
+      <section class="confirm-summary-section" aria-label="Order summary breakdown">
+        <div class="confirm-summary-header">
+          <h4>Order summary</h4>
+          <span class="confirm-order-id" id="confirm-order-id">#CT10482</span>
+        </div>
+
+        <!-- Purchased Items List -->
+        <div class="confirm-items-list" id="confirm-items-list">
+          <!-- Rendered dynamically by js/order-confirmation.js -->
+        </div>
+
+        <!-- Totals & Payment Breakdown -->
+        <div class="confirm-totals-box">
+          <div class="summary-row">
+            <span>Subtotal (2 items)</span>
+            <span class="summary-value" id="confirm-subtotal">₹153.00</span>
+          </div>
+
+          <div class="summary-row">
+            <span>Standard shipping</span>
+            <span class="summary-value" id="confirm-shipping">
+              <span class="free-shipping-tag">Free</span>
+            </span>
+          </div>
+
+          <div class="summary-row">
+            <span>Tax (8%)</span>
+            <span class="summary-value" id="confirm-tax">₹12.24</span>
+          </div>
+
+          <div class="summary-row total-row">
+            <span>Total</span>
+            <span class="summary-value" id="confirm-total">₹165.24</span>
+          </div>
+
+          <div class="payment-status-badge" id="confirm-payment-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+            <span>Paid · Visa ending in 4242</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Continue Shopping Button -->
+      <a href="index.html" class="btn-primary-action" id="btn-continue-shopping">
+        <span>Continue Shopping</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16">
+          <polyline points="9 18 15 12 9 6"/>
+        </svg>
+      </a>
+
+    </main>
+
+  </div>
+</body>
+</html>

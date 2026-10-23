@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sonic Air Pro — Wireless Over-Ear Headphones with Adaptive Noise Cancellation and 40h battery.">
+  <title>Sonic Electronics — Product Details</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/products-data.js" defer></script>
+  <script src="js/state.js" defer></script>
+  <script src="js/common.js" defer></script>
+  <script src="js/product-details.js" defer></script>
+</head>
+<body>
+  <div class="app-viewport">
+    
+    <!-- Top Mobile Status Bar (Figma Reference) -->
+    <header class="status-bar" aria-label="System status">
+      <span class="status-time">9:41</span>
+      <div class="status-icons">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16" aria-hidden="true">
+          <path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L12 22l7.03-4.39C20.26 16.07 21 14.12 21 12c0-4.97-4.03-9-9-9z" opacity="0.3"/>
+          <path d="M12 6a6 6 0 00-6 6c0 1.48.54 2.84 1.43 3.9L12 18.7l4.57-2.8A5.96 5.96 0 0018 12a6 6 0 00-6-6z"/>
+        </svg>
+        <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16" aria-hidden="true">
+          <path d="M12 4C7.31 4 3.07 5.9 0 8.98L12 21 24 8.98C20.93 5.9 16.69 4 12 4z"/>
+        </svg>
+        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden="true">
+          <rect x="2" y="7" width="18" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+          <rect x="4" y="9" width="12" height="6" rx="1"/>
+          <path d="M22 11v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </header>
+
+    <!-- Details Navigation Header (Figma Screen 3) -->
+    <header class="details-header">
+      <button type="button" class="circle-nav-btn" onclick="handleDetailBack()" aria-label="Go back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="18" height="18">
+          <polyline points="15 18 9 12 15 6"/>
+        </svg>
+      </button>
+
+      <h1 class="details-title-heading">Product details</h1>
+
+      <button 
+        type="button" 
+        class="circle-nav-btn" 
+        id="top-wishlist-btn"
+        data-wishlist-id="sonic-air-pro" 
+        aria-label="Save to wishlist"
+      >
+        <span class="heart-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+          </svg>
+        </span>
+      </button>
+    </header>
+
+    <!-- Details Content Container -->
+    <main class="details-container">
+      
+      <!-- Large Rounded Hero Gallery Box -->
+      <section class="details-hero-box" aria-label="Product image gallery">
+        <span class="bestseller-badge" id="bestseller-badge">Bestseller</span>
+
+        <button 
+          type="button" 
+          class="hero-wishlist-btn" 
+          id="hero-wishlist-btn"
+          data-wishlist-id="sonic-air-pro" 
+          aria-label="Toggle wishlist"
+        >
+          <span class="heart-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+          </span>
+        </button>
+
+        <img 
+          id="details-hero-img" 
+          src="assets/images/sonic-air-pro.jpg" 
+          alt="Sonic Air Pro Wireless Headphones" 
+          class="details-hero-img"
+        />
+
+        <!-- Pagination dots -->
+        <div class="gallery-dots" aria-hidden="true">
+          <div class="gallery-dot active"></div>
+          <div class="gallery-dot"></div>
+          <div class="gallery-dot"></div>
+        </div>
+      </section>
+
+      <!-- Product Meta Block -->
+      <section class="details-meta-block" aria-label="Product information">
+        <span class="details-sub-category" id="details-sub-cat">SONIC · WIRELESS OVER-EAR</span>
+        
+        <div class="details-name-price-row">
+          <h2 class="details-product-name" id="details-name">Sonic Air Pro</h2>
+          <span class="details-product-price" id="details-price">₹129.00</span>
+        </div>
+
+        <div class="details-rating-stock-row">
+          <div style="display: flex; align-items: center; gap: 4px;">
+            <span class="star-icon">★</span>
+            <strong id="details-rating">4.8</strong>
+            <span id="details-reviews-count">(248 reviews)</span>
+          </div>
+          <span class="stock-indicator" id="details-stock">In stock</span>
+        </div>
+      </section>
+
+      <!-- Color Selector -->
+      <section class="color-picker-section" aria-label="Color options">
+        <span class="color-picker-label" id="selected-color-label">Color: Sand</span>
+        <div class="color-swatches-group" id="color-swatches-group">
+          <!-- Rendered dynamically by js/product-details.js -->
+        </div>
+      </section>
+
+      <!-- 3 Feature Highlight Pills -->
+      <section class="features-pills-row" id="features-pills-row" aria-label="Product features">
+        <!-- Rendered dynamically by js/product-details.js -->
+      </section>
+
+      <!-- Description Block -->
+      <section class="details-description-block" aria-label="Product description">
+        <h3 class="details-description-heading" id="details-tagline">Your world, on quiet.</h3>
+        <p class="details-description-text" id="details-desc">
+          Immerse yourself in rich, balanced sound. Adaptive noise cancellation creates a sanctuary of sound, while soft cushions keep you comfortable, from your commute to your last call.
+        </p>
+      </section>
+
+    </main>
+
+    <!-- Sticky Bottom Actions -->
+    <div class="details-sticky-actions">
+      <div class="qty-control" aria-label="Quantity selector">
+        <button type="button" class="qty-btn" id="qty-minus-btn" aria-label="Decrease quantity">−</button>
+        <span class="qty-display" id="qty-val">1</span>
+        <button type="button" class="qty-btn" id="qty-plus-btn" aria-label="Increase quantity">+</button>
+      </div>
+      
+      <button type="button" class="btn-add-to-cart" id="btn-add-to-cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+          <circle cx="9" cy="20" r="1.5"/>
+          <circle cx="18" cy="20" r="1.5"/>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+        </svg>
+        <span>Add to Cart</span>
+      </button>
+
+      <button type="button" class="btn-add-to-cart" id="btn-buy-now" style="background-color: #2F3E3B; flex: 0.85;">
+        <span>Buy Now</span>
+      </button>
+    </div>
+
+  </div>
+</body>
+</html>

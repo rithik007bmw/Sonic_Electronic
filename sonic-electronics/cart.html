@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sonic Electronics — Review your shopping cart, manage quantities, and proceed to secure checkout.">
+  <title>Sonic Electronics — Your Cart</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/products-data.js" defer></script>
+  <script src="js/state.js" defer></script>
+  <script src="js/common.js" defer></script>
+  <script src="js/cart.js" defer></script>
+</head>
+<body>
+  <div class="app-viewport">
+    
+    <!-- Top Mobile Status Bar in White over Coral -->
+    <header class="status-bar coral-header" aria-label="System status">
+      <span class="status-time">9:41</span>
+      <div class="status-icons">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16" aria-hidden="true">
+          <path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L12 22l7.03-4.39C20.26 16.07 21 14.12 21 12c0-4.97-4.03-9-9-9z" opacity="0.4"/>
+          <path d="M12 6a6 6 0 00-6 6c0 1.48.54 2.84 1.43 3.9L12 18.7l4.57-2.8A5.96 5.96 0 0018 12a6 6 0 00-6-6z"/>
+        </svg>
+        <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16" aria-hidden="true">
+          <path d="M12 4C7.31 4 3.07 5.9 0 8.98L12 21 24 8.98C20.93 5.9 16.69 4 12 4z"/>
+        </svg>
+        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden="true">
+          <rect x="2" y="7" width="18" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+          <rect x="4" y="9" width="12" height="6" rx="1"/>
+          <path d="M22 11v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </header>
+
+    <!-- Coral Rounded Header (Figma Screen 4) -->
+    <header class="coral-curved-header">
+      <a href="products.html" class="coral-back-btn" aria-label="Go back to products">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20">
+          <polyline points="15 18 9 12 15 6"/>
+        </svg>
+      </a>
+      <h1 class="coral-header-title">Your Cart</h1>
+    </header>
+
+    <!-- Cart Scrollable Content -->
+    <main class="cart-content-container">
+      
+      <!-- Cart Items List -->
+      <section class="cart-items-list" id="cart-items-container" aria-label="Items in your cart">
+        <!-- Rendered dynamically by js/cart.js -->
+      </section>
+
+      <!-- Empty Cart Message (if all items removed) -->
+      <div id="cart-empty-state" class="empty-cart-state" style="display: none;">
+        <div class="empty-cart-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="28" height="28">
+            <circle cx="9" cy="20" r="1.5"/>
+            <circle cx="18" cy="20" r="1.5"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+          </svg>
+        </div>
+        <h3 style="font-size: 16px; font-weight: 700;">Your cart is empty</h3>
+        <p style="font-size: 12.5px; color: var(--secondary-text);">Explore our premium headphones and accessories to add items to your cart.</p>
+        <a href="products.html" class="btn-primary-action" style="max-width: 200px; margin-top: 10px;">Browse Products</a>
+      </div>
+
+      <!-- Delivery Status Banner (Figma Screen 4) -->
+      <section class="delivery-status-banner" aria-label="Delivery status">
+        <div class="delivery-truck-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24">
+            <rect x="1" y="3" width="15" height="13" rx="2"/>
+            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+            <circle cx="5.5" cy="18.5" r="2.5"/>
+            <circle cx="18.5" cy="18.5" r="2.5"/>
+          </svg>
+        </div>
+        <span class="delivery-status-text">Your order Delivery soon</span>
+      </section>
+
+      <!-- Order Summary Box inside Gray Container (Figma Screen 4) -->
+      <section class="summary-container-box" id="cart-summary-box" aria-label="Order summary">
+        <div class="summary-white-card">
+          <h3 class="summary-card-title">Order summary</h3>
+          
+          <div class="summary-row">
+            <span id="summary-subtotal-label">Subtotal (2 items)</span>
+            <span class="summary-value" id="summary-subtotal-val">₹153.00</span>
+          </div>
+
+          <div class="summary-row">
+            <span>Standard shipping</span>
+            <span class="summary-value" id="summary-shipping-val">
+              <span class="free-shipping-tag">Free</span>
+            </span>
+          </div>
+
+          <div class="summary-row">
+            <span>Estimated tax (8%)</span>
+            <span class="summary-value" id="summary-tax-val">₹12.24</span>
+          </div>
+
+          <div class="summary-row total-row">
+            <span>Total</span>
+            <span class="summary-value" id="summary-total-val">₹165.24</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Checkout Actions -->
+      <div id="checkout-action-wrap">
+        <button type="button" class="btn-primary-action" id="btn-proceed-checkout">
+          <span>Proceed to Checkout</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16">
+            <polyline points="9 18 15 12 9 6"/>
+          </svg>
+        </button>
+
+        <div class="secure-checkout-label">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
+          <span>Secure checkout · Encrypted payments</span>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- Checkout Modal Dialog -->
+    <div class="modal-overlay" id="checkout-modal" role="dialog" aria-modal="true" aria-labelledby="checkout-title">
+      <div class="checkout-sheet">
+        <div class="sheet-header">
+          <h3 id="checkout-title">Demo Checkout</h3>
+          <button type="button" class="sheet-close-btn" id="checkout-modal-close" aria-label="Close modal">×</button>
+        </div>
+
+        <form id="demo-checkout-form">
+          <div class="form-group">
+            <label for="input-customer-name">Full Name</label>
+            <input type="text" id="input-customer-name" class="form-control" value="Alex Morgan" required>
+          </div>
+
+          <div class="form-group">
+            <label for="input-address">Delivery Address</label>
+            <textarea id="input-address" class="form-control" rows="2" required>18 Spring St&#10;New York, NY 10012</textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="input-card">Demo Card Details</label>
+            <input type="text" id="input-card" class="form-control" value="•••• •••• •••• 4242  (Demo)" disabled>
+          </div>
+
+          <p style="font-size: 11px; color: var(--secondary-text); margin-bottom: 16px;">
+            This is a safe demonstration checkout flow. No real charges or payment credentials are processed.
+          </p>
+
+          <button type="submit" class="btn-primary-action">
+            <span>Confirm Demo Payment</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
